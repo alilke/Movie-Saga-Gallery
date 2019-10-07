@@ -1,9 +1,19 @@
-# Project Name
+## Database Setup
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+1. Create a database named `saga_movies_weekend`
+2. Run the queries from `database.sql` on the `saga_movies_weekend` database.
+3. You will need to create the junction table between the `movies` and `genres` tables!
 
-## Description
+## Install Dependencies
 
-Your project description goes here. What problem did you solve? How did you solve it?
+1. `npm install`
+2. `npm run server`
+3. `npm run client`
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/github-finalization-assignment).
+## Notes
+
+Completed Features
+
+Hover over images, and click on a movie poster to view details of the movie including the genre.
+Edit movie title, as well as the movie details.
+
