@@ -8,7 +8,9 @@ class Details extends Component {
     }
 
     getInfo = () => {
+        // SAGA: call to get selected movie details 
         this.props.dispatch({ type: 'GET_MOVIE', payload: this.props.match.params.id })
+        // SAGA: call to get genres on selected movie details 
         this.props.dispatch({ type: 'GET_GENRES', payload: this.props.match.params.id })
     }
 

@@ -10,11 +10,13 @@ class Edit extends Component {
         movieId: this.props.match.params.id
     }
     componentDidMount = () => {
+        // SAGA: dispatch to get selected movie details 
         this.props.dispatch({ type: 'GET_MOVIE', payload: this.props.match.params.id });
     }
 
 
     handleChange = (propertyName, event) => {
+        // update local state with input
         this.setState({
             ...this.state,
             [propertyName]: event.target.value
@@ -22,6 +24,7 @@ class Edit extends Component {
     }
 
     handleSave = () => {
+        // CLICK: sends updates  to post
         this.props.dispatch({ type: 'UPDATE_MOVIE', payload: this.state })
         this.props.history.goBack();
     }

@@ -9,6 +9,7 @@ class Home extends Component {
     }
 
     getMovies = () => {
+         // SAGA: call to get ALL movie details 
         this.props.dispatch({ type: 'GET_MOVIES' });
     }
 
@@ -18,7 +19,7 @@ class Home extends Component {
 
     render() {
         return (
-
+// this section will map over movie list and put all the results on the dom
             <div>
                 <div className="header">
                     <h1>Movies</h1>
