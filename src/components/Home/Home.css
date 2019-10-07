@@ -1,0 +1,12 @@
+
+.movieContainer{
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.header {
+    background: black;
+    color: white;
+    padding: 30px;
+}
