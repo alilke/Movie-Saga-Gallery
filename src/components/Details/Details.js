@@ -9,6 +9,7 @@ class Details extends Component {
 
     getInfo = () => {
         this.props.dispatch({ type: 'GET_MOVIE', payload: this.props.match.params.id })
+        this.props.dispatch({ type: 'GET_GENRES', payload: this.props.match.params.id })
     }
 
     goBack = () => {
@@ -25,12 +26,21 @@ class Details extends Component {
 
             <div className="Details">
 
-                <button onClick={this.goBack}>GO BACK</button>
+                <button onClick={this.goBack}>BACK TO LIST</button>
                 <button onClick={() => { this.goToEdit(this.props.match.params.id) }}>EDIT</button>
 
                 <div className="movieDetails">
                     <h3>{movie.title}</h3>
                     <p>{movie.description}</p>
+                </div>
+
+                <div className="genres">
+                    <h4>Genres</h4>
+                    <ul>
+                        {this.props.reduxState.genres.map((genre, i) => {
+                            return <li key={i}>{genre.name}</li>
+                        })}
+                    </ul>
                 </div>
             </div>
 

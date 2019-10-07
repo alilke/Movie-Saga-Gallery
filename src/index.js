@@ -13,6 +13,8 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovieData);
     yield takeEvery('GET_MOVIE', getOneMovie);
+    yield takeEvery('GET_GENRES', getGenres);
+
 }
 
 function* getMovieData() {
@@ -30,6 +32,15 @@ function* getOneMovie(action) {
         yield put({ type: 'SET_MOVIE', payload: response.data });
     } catch (error) {
         console.log('error getting this one movie details', error);
+    }
+}
+
+function* getGenres(action) {
+    try {
+        const response = yield axios.get(`/movies/genres/${action.payload}`);
+        yield put({ type: 'SET_GENRES', payload: response.data });
+    } catch (error) {
+        console.log('error getting generes for this movie', error);
     }
 }
 
@@ -52,10 +63,20 @@ const selectedMovie = (state = {}, action) => {
     return state;
 }
 
+const genres = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_GENRES':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 const storeInstance = createStore(
     combineReducers({
         movies,
         selectedMovie,
+        genres
     }),
 
 
