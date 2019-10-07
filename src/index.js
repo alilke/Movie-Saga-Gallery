@@ -14,6 +14,8 @@ function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovieData);
     yield takeEvery('GET_MOVIE', getOneMovie);
     yield takeEvery('GET_GENRES', getGenres);
+    yield takeEvery('UPDATE_MOVIE', updateMovie);
+
 
 }
 
@@ -41,6 +43,15 @@ function* getGenres(action) {
         yield put({ type: 'SET_GENRES', payload: response.data });
     } catch (error) {
         console.log('error getting generes for this movie', error);
+    }
+}
+
+function* updateMovie(action) {
+    //runs POST request to server to update title and description
+    try {
+        yield axios.post('/movies', action.payload);
+    } catch (error) {
+        console.log('error updating movie information');
     }
 }
 

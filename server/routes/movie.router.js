@@ -40,4 +40,20 @@ router.get('/genres/:id', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+    let updates = req.body;
+    let queryText = `UPDATE "movies" SET "title" = $1, "description" = $2 WHERE "id" = $3`;
+    let queryValues = [
+        updates.newTitle,
+        updates.newDescription,
+        updates.movieId
+    ];
+    pool.query(queryText, queryValues).then((results) => {
+        res.sendStatus(200)
+    }).catch((error) => {
+        console.log('error updating movie', error);
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;
